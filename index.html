@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charity: Water Quest</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game-container">
+    <header>
+      <p class="brand">charity: water</p>
+      <h1>Water Quest 💧</h1>
+      <p class="intro">
+        Every can counts! Collect 20 cans in 30 seconds
+        to complete your water quest.
+      </p>
+    </header>
+
+    <section class="stats" aria-label="Game statistics">
+      <div class="stat-card">
+        <span>Cans Collected</span>
+        <strong id="score">0 / 20</strong>
+      </div>
+      <div class="stat-card">
+        <span>Time Left</span>
+        <strong id="timer">30s</strong>
+      </div>
+    </section>
+
+    <div class="progress-track">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
+    <p id="message" class="message" aria-live="polite">
+      Ready? Tap the cans to begin!
+    </p>
+
+    <section id="can-grid" class="can-grid"
+      aria-label="Tap the charity water cans">
+    </section>
+
+    <button id="start-button" class="start-button">
+      Start Water Quest
+    </button>
+
+    <p class="instructions">
+      Tap each can once. Collect 20 cans before the timer reaches zero!
+    </p>
+    <p class="footer">Small actions can make a big difference. 💙</p>
+  </main>
+
+  <div id="celebration" class="celebration" hidden>
+    <div class="win-card">
+      <div class="trophy">🏆</div>
+      <h2 id="win-title">You Did It!</h2>
+      <p id="win-message">
+        You collected 20 cans in 30 seconds!
+      </p>
+      <button id="play-again" class="start-button">
+        Play Again
+      </button>
+    </div>
+  </div>
+
+  <div id="confetti-container" aria-hidden="true"></div>
+</body>
+</html>

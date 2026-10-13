@@ -1,0 +1,252 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #00a6c8;
+  --dark-blue: #073b4c;
+  --yellow: #ffc907;
+  --light-blue: #e9f9fc;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 30px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dark-blue);
+  background: linear-gradient(135deg, #e9f9fc, #fff8d9);
+}
+
+.game-container {
+  width: 100%;
+  max-width: 700px;
+  padding: 32px;
+  text-align: center;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 15px 45px rgba(7, 59, 76, 0.12);
+}
+
+.brand {
+  margin: 0;
+  color: #008caf;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 12px 0;
+  font-size: clamp(2rem, 6vw, 3.3rem);
+}
+
+.intro {
+  max-width: 480px;
+  margin: 0 auto 24px;
+  color: #52717a;
+  line-height: 1.6;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.stat-card {
+  padding: 18px 10px;
+  background: var(--light-blue);
+  border-radius: 16px;
+}
+
+.stat-card span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.stat-card strong {
+  font-size: 1.8rem;
+}
+
+.progress-track {
+  height: 12px;
+  margin-top: 20px;
+  overflow: hidden;
+  background: #e5edf0;
+  border-radius: 20px;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: var(--blue);
+  border-radius: 20px;
+  transition: width 0.2s ease;
+}
+
+.message {
+  min-height: 28px;
+  margin: 22px 0;
+  font-weight: 700;
+}
+
+.can-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.can {
+  min-width: 0;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.7rem, 5vw, 2.5rem);
+  background: #fff8d9;
+  border: 2px solid #f3e6a4;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.can:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.04);
+  background: #fff0a8;
+}
+
+.can:focus-visible,
+.start-button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.can.collected {
+  background: #e0f7eb;
+  border-color: #9adbb7;
+  cursor: default;
+  animation: pop 0.25s ease;
+}
+
+.can:disabled {
+  cursor: default;
+}
+
+.start-button {
+  padding: 15px 28px;
+  color: #152f37;
+  background: var(--yellow);
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.96);
+}
+
+.instructions,
+.footer {
+  color: #66818a;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer {
+  margin-bottom: 0;
+}
+
+.celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(7, 59, 76, 0.78);
+}
+
+.celebration[hidden] {
+  display: none;
+}
+
+.win-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 35px 25px;
+  text-align: center;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: pop 0.4s ease;
+}
+
+.trophy {
+  font-size: 4rem;
+}
+
+.win-card h2 {
+  margin: 12px 0;
+  font-size: 2rem;
+}
+
+.win-card p {
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+#confetti-container {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  animation: fall 2.8s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(800deg);
+  }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@media (max-width: 500px) {
+  .game-container {
+    padding: 22px 14px;
+  }
+
+  .can-grid {
+    gap: 7px;
+  }
+
+  .can {
+    border-radius: 10px;
+  }
+}
